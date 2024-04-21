@@ -21,4 +21,4 @@ jobs:
           cache: maven
       - name: Maven package
         working-directory: ./my-app
-        run: mvn package
+        run: mvn package --no-transfer-progress
