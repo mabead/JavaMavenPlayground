@@ -23,4 +23,5 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Maven package
+        working-directory: ./my-app
         run: mvn package
