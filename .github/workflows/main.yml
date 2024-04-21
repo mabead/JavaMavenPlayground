@@ -36,3 +36,26 @@ jobs:
             my-app/target
             hello.txt
           retention-days: 1
+
+  test:
+    name: "Test"
+    runs-on: [ubuntu-latest]
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Restore target folders
+        uses: actions/download-artifact@v4
+        with:
+          name: TargetFolders
+
+      - name: Maven package
+        working-directory: ./my-app
+        run: mvn package --no-transfer-progress -Dmaven.test.skip
