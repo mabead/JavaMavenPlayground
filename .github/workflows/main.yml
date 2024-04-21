@@ -58,4 +58,4 @@ jobs:
 
       - name: Maven package
         working-directory: ./my-app
-        run: mvn package --no-transfer-progress -Dmaven.test.skip
+        run: mvn package --no-transfer-progress
